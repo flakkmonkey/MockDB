@@ -7,10 +7,10 @@ def generate_product_name(i):
 
 # Function to generate random locations in the format "R-1.2.3"
 def generate_location():
-    number1 = random.randint(1, 9)  # Choose a random integer between 1 and 9
-    number2 = random.randint(1, 9)  # Choose another random integer between 1 and 9
-    number3 = random.randint(1, 9)  # Choose another random integer between 1 and 9
-    return f'R-{number1}.{number2}.{number3}'
+    aisle = random.randint(1, 9)  # Choose a random integer between 1 and 9
+    bay = random.randint(1, 9)  # Choose another random integer between 1 and 9
+    shelf = random.randint(1, 9)  # Choose another random integer between 1 and 9
+    return f'R-{aisle}.{bay}.{shelf}'
 
 # Function to generate random quantity
 def generate_quantity():
@@ -37,7 +37,7 @@ conn.commit()
 
 # Generate mock data for the inventory
 # Using a list comprehension to create 10,000 records
-inventory_data = [(generate_product_name(i), generate_quantity(), generate_location()) for i in range(1, 10001)]
+inventory_data = [(generate_product_name(i), generate_quantity(), generate_location()) for i in range(1, 100)]
 
 # Insert the generated data into the inventory table
 cursor.executemany('''
